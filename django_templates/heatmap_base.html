@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="google-site-verification" content="mLGN_ViWPzHrfTXdYeOgMpq531ENBolc6a7k9kaXtAg" />
+	<meta charset="utf-8">
+	<title>{{ title }}</title>
+	<link href="media/img/favicon.png" rel="shortcut icon" type="image/png"/>	
+	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.8.1/build/reset/reset-min.css">
+	<link rel="stylesheet" href="media/css/heatmap.css">
+	<link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+{% block header %}{% endblock %}
+{% block filters %}{% endblock %}
+{% block content %}{% endblock %}
+
+	<div id='footer'>
+		Rendering by Blake Cutler and Chris Jung - Data collected by Mozilla Lab's Test Pilot Team
+	</div>
+	
+</body>
+
+<script src="http://www.google.com/jsapi"></script>
+<script>google.load("jquery", "1.4.2");</script>
+<script type="text/javascript" src="media/js/main.js"></script>
