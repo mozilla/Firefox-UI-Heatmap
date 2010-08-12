@@ -3,7 +3,7 @@ html {
 	color: white;
 	margin: 50px 40px;
 	font-family: 'Droid Sans', sans-serif; 
-	width: 1270px;
+	width: 1770px;
 }
 
 #content {
@@ -22,7 +22,7 @@ html {
 	display: none;
 }
 
-#items_list {
+.items_list {
 	float: right;
 	font-size: 12px;
 	color: #777;
@@ -30,7 +30,6 @@ html {
 
 #fx_chrome {
 	position: relative;
-	margin-top: -7px;
 	z-index: -1;
 	opacity: .2;
 }
@@ -41,7 +40,7 @@ html {
 
 #combined_menu {
 	position: absolute;
-	top: 222px;
+	top: 229px;
 	left: 50px;
 	height: 220px;
 	opacity: 1;
@@ -90,7 +89,7 @@ html {
 
 #bookmarks_menu {
 	position: absolute;
-	top: 280px;
+	top: 287px;
 	left: 883px;
 	height: 290px;
 	opacity: 1;
@@ -173,7 +172,7 @@ html {
 
 #firefox_button {
 	position: absolute; 
-	top: 204px; 
+	top: 211px; 
 	left: 49px; 
 	height: 17px;
 	width: 91px;
@@ -184,14 +183,14 @@ html {
 
 #tab_strip {
 	position: absolute; 
-	top: 226px; 
+	top: 233px; 
 	left: 50px; 
 	width: 50%;
 }
 
 #navigation_toolbar {
 	position: absolute; 
-	top: 257px; 
+	top: 264px; 
 	left: 50px; 
 	width: 1000px;
 }
@@ -264,16 +263,16 @@ html {
 	line-height: 1.9em;
 }
 
-#new_window { top: 225px; }
-#save_page_as { top: 249px; }
-#send_link { top: 269px; }
-#print { top: 289px; }
-#find_in_this_page { top: 309px; }
-#history { top: 333px; }
-#customize { top: 356px; }
-#options { top: 376px; }
-#help { top: 396px; }
-#exit { top: 421px; }
+#new_window { top: 232px; }
+#save_page_as { top: 256px; }
+#send_link { top: 276px; }
+#print { top: 296px; }
+#find_in_this_page { top: 316px; }
+#history { top: 340px; }
+#customize { top: 363px; }
+#options { top: 383px; }
+#help { top: 403px; }
+#exit { top: 428px; }
 
 .overlay_bookmarks_menu {
 	position: absolute;	
@@ -291,10 +290,10 @@ html {
 }
 
 #bookmark_all_tabs { top: 282px; }
-#organize_bookmarks { top: 302px; }
-#view_bookmarks_toolbar { top: 327px; }
-#show_in_sidebar { top: 347px; }
-#bookmark_item { top: 510px; height: 59px; text-align: right;}
+#organize_bookmarks { top: 309px; }
+#view_bookmarks_toolbar { top: 333px; }
+#show_in_sidebar { top: 354px; }
+#bookmark_item { top: 517px; height: 59px; text-align: right;}
 
 .print_menu {
 	position: absolute;
@@ -391,6 +390,13 @@ h2 {
 	color: #777;
 	margin: 0 0 20px 2px;
 }
+
+h3 {
+	font-size: 16px;
+	color: #CCC;
+	margin: 0 0 8px 0;
+}
+
 
 a {
 	color: #777;

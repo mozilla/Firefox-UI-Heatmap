@@ -30,3 +30,4 @@ class Heatmap(models.Model):
 		
 	def __unicode__(self):
 		return 'A heatmap of id %d' % (self.id)
+		

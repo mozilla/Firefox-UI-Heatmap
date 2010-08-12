@@ -52,16 +52,39 @@
 
 {% block content %}
 	<div id='content'>	
-		<div id='items_list'>
-			<ul>
+
+
+		<div class='items_list' >
+			<h3>Customizations</h3>
 				{% for item in items_list %}
-					<li>
-						<div class='perc_box' style='background-color: {{ item.color }};'>{{ item.stat }}</div>{{ item.name }}
-						<div style='height:4px;'></div>
-					</li>						
+					{% if item.is_customization %}
+						<div class='perc_box' style='background-color: {{ item.color }};'>{{ item.stat }}</div>
+						<div style='width: 260px;'>{{ item.name }}</div>
+						<div style='height:1px; clear: both;'></div>					
+					{% endif %}
 				{% endfor %}
-			</ul>
 		</div>	
+
+		<div class='items_list' >
+			<h3>Menu Items</h3>
+				{% for item in items_list %}
+					{% if item.is_menu %}
+						<div class='perc_box' style='background-color: {{ item.color }};'>{{ item.stat }}</div>
+						<div style='width: 230px;'>{{ item.name }}</div>
+						<div style='height:1px; clear: both;'></div>					
+					{% endif %}
+				{% endfor %}
+		</div>					
+		<div class='items_list' >
+			<h3>Main UI Elements</h3>
+				{% for item in items_list %}
+					{% if item.is_navigation_toolbar %}
+						<div class='perc_box' style='background-color: {{ item.color }};'>{{ item.stat }}</div>
+						<div style='width: 270px;'>{{ item.name }}</div>
+						<div style='height:1px; clear: both;'></div>					
+					{% endif %}
+				{% endfor %}
+		</div>			
 			
 		<img src='media/img/fx_4_b1.png' id='fx_chrome' />
 

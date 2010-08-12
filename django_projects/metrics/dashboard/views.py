@@ -26,14 +26,15 @@ def tab(request):
 
 def heatmap(request):
 	title = 'Firefox Heatmap'
-	data = 'perc'
 	skill = 'All'
 	perc_used_by = median_clicks_per_user = False
 	all = beginner = intermediate = advanced = False
 	show_perc = True;
 	
 	if 'd' in request.GET:
-		data = request.GET['d']
+		data = request.GET['d']	
+	else:
+		data = 'perc'		
 		
 	items = Heatmap.objects.filter(os = 'Windows', skill = skill).order_by('id')   
 	
@@ -71,9 +72,18 @@ def heatmap(request):
 			item.color = item.heat_freq()
 		else:
 			item.color = item.heat_perc()
-
+		
+		if item.category == 'Navigation Toolbar' or item.category == 'Tab Bar':
+			item.is_navigation_toolbar = True
+		
+		if item.category == 'Customization':
+			item.is_customization = True
+			
+		if item.category == 'Bookmarks Menu' or item.category == 'Firefox Menu' or item.category == 'Context Menu':
+			item.is_menu = True
+			
 		item.perc = "%0.0f" % (item.perc * 100) + '%'
-		item.clicks_per_user = round(item.clicks_per_user, 3)		
+		item.clicks_per_user = round(item.clicks_per_user, 2)		
 		if data == 'freq':
 			item.stat = item.clicks_per_user
 		else:
