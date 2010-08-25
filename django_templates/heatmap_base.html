@@ -14,13 +14,29 @@
 {% block header %}{% endblock %}
 {% block filters %}{% endblock %}
 {% block content %}{% endblock %}
+<!--[if IE]> 
+	{% if show_perc %}
+		<img src='media/img/ie_perc.png' id='fx_chrome' />
+	{% else %}
+		<img src='media/img/ie_freq.png' id='fx_chrome' />
+	{% endif %}
+	
+	<style>
+	#content {
+		display: none;
+	}
+	#checkboxes {
+		display: none;
+	}
+	</style> 
+<![endif]-->
 
 	<div id='footer'>
 		Rendering by Blake Cutler and Chris Jung - Data collected by Mozilla Lab's Test Pilot Team
-	</div>
-	
+	</div>	
 </body>
 
 <script src="http://www.google.com/jsapi"></script>
 <script>google.load("jquery", "1.4.2");</script>
 <script type="text/javascript" src="media/js/main.js"></script>
+<div id="disqus_thread"></div>
