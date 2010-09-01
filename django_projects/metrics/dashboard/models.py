@@ -9,7 +9,7 @@ class Heatmap(models.Model):
 	is_in_table = models.BooleanField()
 	os = models.CharField(max_length=30)		
 	skill = models.CharField(max_length=30)	
-	time_on_web = models.IntegerField()	
+	time_on_web = models.CharField(max_length=30)	
 	perc = models.FloatField()
 	clicks_per_user = models.FloatField()
 	clicks_per_user_median = models.FloatField()
@@ -22,7 +22,7 @@ class Heatmap(models.Model):
 		return "hsl(" + str(h) + "," + str(s) +"%," + str(l) + "%)"	
 		
 	def heat_freq(self):
-		normalize = log(self.clicks_per_user + 1 )/ log(103.3) #change to MAX
+		normalize = log(self.clicks_per_user + 1 )/ log(202.83) #change to MAX
 		h = 360 * (1 - normalize)
 		s = normalize * 75
 		l = normalize * 50

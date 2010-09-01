@@ -2,30 +2,21 @@
 
 {% block header %}
 	<h1>Firefox Main Window Heatmap</h1>
-	<h2>Based on over 78,000 Windows 7 and Vista Test Pilot submissions from 7 days in July 2010 - <a href='https://testpilot.mozillalabs.com/testcases/betaui' >Study details</a></h2>
+	<h2>Based on over 117,000 Windows 7 and Vista Test Pilot submissions from 7 days in July 2010 - <a href='https://testpilot.mozillalabs.com/testcases/betaui' >Study details</a></h2>
 {% endblock %}
 
 {% block filters %}
 	<ul>
 		<li><a href='heatmap' class="button left {% if show_perc %}active{% endif %}">Used by x% of users</a></li>
 		<li><a href='?d=freq' class="button right {% if not show_perc %}active{% endif %}">Clicks per user</a></li>
-	</ul>	
-
-	<!--
-	<ul>
-		<li><a href='' class="button left active">Windows</a></li>
-		<li><a href='' class="button">OS X</a></li>		
-		<li><a href='' class="button right">Linux</a></li>
-	</ul> -->
+	</ul> 
 	
-	<!--
 	<ul>
 		<li><a href='?s=all' class="button left {% if all %}active{% endif %}">All Skills</a></li>
 		<li><a href='?s=beginner' class="button {% if beginner %}active{% endif %}">Beginner</a></li>
 		<li><a href='?s=intermediate' class="button {% if intermediate %}active{% endif %}">Intermediate</a></li>		
 		<li><a href='?s=advanced' class="button right {% if advanced %}active{% endif %}">Advanced</a></li>
 	</ul>	
-	-->
 	
 	<ul id='checkboxes'>
 		<li>
@@ -52,8 +43,6 @@
 
 {% block content %}
 	<div id='content'>	
-
-
 		<div class='items_list' >
 			<h3>Customizations</h3>
 				{% for item in items_list %}
@@ -80,7 +69,7 @@
 				{% for item in items_list %}
 					{% if item.is_navigation_toolbar %}
 						<div class='perc_box' style='background-color: {{ item.color }};'>{{ item.stat }}</div>
-						<div style='width: 270px;'>{{ item.name }}</div>
+						<div style='width: 300px;'>{{ item.name }}</div>
 						<div style='height:1px; clear: both;'></div>					
 					{% endif %}
 				{% endfor %}
@@ -166,24 +155,28 @@
 		</div>	
 		-->
 		
-		<!--
+
 		<div id='vertical_scroll'> 
-			<div style='background-color: {{ scroll_up.color }};' id='scrol_up' class='overlay'>{{ scroll_up.stat }}</div>
+			<div style='background-color: {{ scroll_up.color }};' id='scrol_up' class='overlay'>{{ scroll_up.stat }}<span>{{ scroll_up.hover }}</span></div>
 			<div id='scroll_vertical_up_label' class='overlay_label'></div>
 			
-			<div style='background-color: {{ scroll_vertical_bar.color }};' id='scroll_vertical_bar' class='overlay'>{{ scroll_vertical_bar.stat }}</div>
+			<div style='background-color: {{ scroll_vertical_bar.color }};' id='scroll_vertical_bar' class='overlay'>{{ scroll_vertical_bar.stat }}<span>{{ scroll_vertical_bar.hover }}</span></div>
 			<div id='scroll_vertical_bar_label' class='overlay_label'></div>
 			
-			<div style='background-color: {{ scroll_down.color }};' id='scroll_down' class='overlay'>{{ scroll_down.stat }}</div>
+			<div style='background-color: {{ scroll_down.color }};' id='scroll_down' class='overlay'>{{ scroll_down.stat }}<span>{{ scroll_down.hover }}</span></div>
 			<div id='scroll_vertical_down_label' class='overlay_label'></div>																													
 		</div>			
 
 		<div id='horizontal_scroll'>
-			<div style='background-color: {{ scroll_left.color }};' id='scroll_left' class='overlay'>{{ scroll_left.stat }}</div><div id='scroll_horizontal_up_label' class='overlay_label'></div>
-			<div style='background-color: {{ scroll_horizontal_bar.color }};' id='scroll_horizontal_bar' class='overlay'>{{ scroll_horizontal_bar.stat }}</div><div id='scroll_horizontal_bar_label' class='overlay_label'></div>
-			<div style='background-color: {{ scroll_right.color }};' id='scroll_right' class='overlay'>{{ scroll_right.stat }}</div><div id='scroll_horizontal_down_label' class='overlay_label'></div>								
-		</div>
-		-->			
+			<div style='background-color: {{ scroll_left.color }};' id='scroll_left' class='overlay'>{{ scroll_left.stat }}<span>{{ scroll_left.hover }}</span></div>
+			<div id='scroll_horizontal_up_label' class='overlay_label'></div>
+			
+			<div style='background-color: {{ scroll_horizontal_bar.color }};' id='scroll_horizontal_bar' class='overlay'>{{ scroll_horizontal_bar.stat }}<span>{{ scroll_horizontal_bar.hover }}</span></div>
+			<div id='scroll_horizontal_bar_label' class='overlay_label'></div>
+			
+			<div style='background-color: {{ scroll_right.color }};' id='scroll_right' class='overlay'>{{ scroll_right.stat }}<span>{{ scroll_right.hover }}</span></div>
+			<div id='scroll_horizontal_down_label' class='overlay_label'></div>								
+		</div>		
 	</div>				
 	
 	<div id='menus_wrapper'>
@@ -210,7 +203,7 @@
 			<div style='background-color: {{ history_item.color }}; text-align: right;' id='history_item' class='history_menu'>{{ history_item.stat }}</div>				
 		
 			<img src='media/img/customize_menu.png' id='customize_menu' />	
-			<!-- <div style='background-color: {{ tabs_on_top.color }};' id='tabs_on_top' class='customize_menu'>{{ tabs_on_top.stat }}</div>		-->
+			<div style='background-color: {{ tabs_on_top.color }};' id='tabs_on_top' class='customize_menu'>{{ tabs_on_top.stat }}</div>
 			<div style='background-color: {{ toolbar_layout.color }};' id='toolbar_layout' class='customize_menu'>{{ toolbar_layout.stat }}</div>		
 			<div style='background-color: {{ customize_sidebars.color }};' id='customize_sidebars' class='customize_menu'>{{ customize_sidebars.stat }}</div>		
 			<div style='background-color: {{ add_ons.color }};' id='add_ons' class='customize_menu'>{{ add_ons.stat }}</div>								

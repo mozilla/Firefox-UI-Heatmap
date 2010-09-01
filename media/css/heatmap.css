@@ -3,7 +3,7 @@ html {
 	color: white;
 	margin: 50px 40px;
 	font-family: 'Droid Sans', sans-serif; 
-	width: 1770px;
+	width: 1800px;
 }
 
 #content {
@@ -151,6 +151,7 @@ html {
 .overlay span {
 	display: none;	
 	z-index: 2;
+	line-height: 1.4em;
 }
 
 .overlay:hover span {
@@ -204,14 +205,14 @@ html {
 
 #horizontal_scroll {
 	position: absolute; 
-	top: 780px; 
+	top: 788px; 
 	left: 47px; 
 	width: 1000px;
 }
 
 #vertical_scroll {
 	position: absolute; 
-	top: 287px; 
+	top: 294px; 
 	left: 980px; 
 }
 
