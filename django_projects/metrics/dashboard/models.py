@@ -22,7 +22,7 @@ class Heatmap(models.Model):
 		return "hsl(" + str(h) + "," + str(s) +"%," + str(l) + "%)"	
 		
 	def heat_freq(self):
-		normalize = log(self.clicks_per_user + 1 )/ log(202.83) #change to MAX
+		normalize = log(self.clicks_per_user + 1 )/ log(267.3) #change to MAX
 		h = 360 * (1 - normalize)
 		s = normalize * 75
 		l = normalize * 50

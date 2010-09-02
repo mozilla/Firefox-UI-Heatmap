@@ -7,17 +7,36 @@
 
 {% block filters %}
 	<ul>
-		<li><a href='heatmap' class="button left {% if show_perc %}active{% endif %}">Used by x% of users</a></li>
-		<li><a href='?d=freq' class="button right {% if not show_perc %}active{% endif %}">Clicks per user</a></li>
+		<li><a href='heatmap?s={{ skill }}' class="button left {% if show_perc %}active{% endif %}">Used by x% of users</a></li>
+		<li><a href='?d=freq&s={{ skill }}' class="button right {% if not show_perc %}active{% endif %}">Clicks per user</a></li>
 	</ul> 
 	
 	<ul>
-		<li><a href='?s=all' class="button left {% if all %}active{% endif %}">All Skills</a></li>
-		<li><a href='?s=beginner' class="button {% if beginner %}active{% endif %}">Beginner</a></li>
-		<li><a href='?s=intermediate' class="button {% if intermediate %}active{% endif %}">Intermediate</a></li>		
-		<li><a href='?s=advanced' class="button right {% if advanced %}active{% endif %}">Advanced</a></li>
+		<li><a href='?s=all&d={{ data }}' class="button left {% if all_skills %}active{% endif %}">All Skills</a></li>
+		{% if all_hours %}		
+		<li><a href='?s=beginner&d={{ data }}' class="button {% if beginner %}active{% endif %}">Beginner</a></li>
+		<li><a href='?s=intermediate&d={{ data }}' class="button {% if intermediate %}active{% endif %}">Intermediate</a></li>		
+		<li><a href='?s=advanced&d={{ data }}' class="button right {% if advanced %}active{% endif %}">Advanced</a></li>
+		{% else %}
+		<li><a href='#' class="button inactive">Beginner</a></li>
+		<li><a href='#' class="button inactive">Intermediate</a></li>		
+		<li><a href='#' class="button inactive right">Advanced</a></li>
+		{% endif %}		
 	</ul>	
 	
+	<ul>
+		<li><a href='?t=all&d={{ data }}' class="button left {% if all_hours %}active{% endif %}">All Hours</a></li>
+		{% if all_skills %}
+		<li><a href='?t=low&d={{ data }}' class="button {% if low %}active{% endif %}">&nbsp; 0 - 2 &nbsp;</a></li>
+		<li><a href='?t=medium&d={{ data }}' class="button {% if medium %}active{% endif %}"> &nbsp; 2 - 6 &nbsp;</a></li>		
+		<li><a href='?t=high&d={{ data }}' class="button right {% if high %}active{% endif %}">&nbsp;&nbsp; 6 + &nbsp;&nbsp;</a></li>
+		{% else %}
+		<li><a href='#' class="button inactive">&nbsp; 0 - 2 &nbsp;</a></li>
+		<li><a href='#' class="button inactive">&nbsp; 2 - 6 &nbsp;</a></li>		
+		<li><a href='#' class="button inactive right">&nbsp;&nbsp; 6 + &nbsp;&nbsp;</a></li>		
+		{% endif %}		
+	</ul>
+		
 	<ul id='checkboxes'>
 		<li>
 			<input type=checkbox 
@@ -74,87 +93,201 @@
 					{% endif %}
 				{% endfor %}
 		</div>			
-			
+
 		<img src='media/img/fx_4_b1.png' id='fx_chrome' />
 
-		<div style='background-color: {{ firefox_button.color }};' id='firefox_button' class='overlay'>{{ firefox_button.stat }}<span>{{ firefox_button.hover }}</span></div>
-		<div id='firefox_button_label' class='overlay_label'></div>
+		<div class='item_container'>
+			<div style='background-color: {{ firefox_button.color }};' id='firefox_button' class='overlay'>{{ firefox_button.stat }}</div>	
+			<div class='item_details' style='top: 210px; left: 78px;'>
+				<div class="menu_arrow" style="left: 10px;">◢◣</div>
+				<div class="menu_arrow_mask" style="left: 8.5px;"></div>
+				{{ firefox_button.hover|safe }}
+			</div>
+		</div>
 
 		<div id='tab_strip'>
-			<div style='background-color: {{ tab_scroll_left.color }};' id='tab_scroll_left' class='overlay'>{{ tab_scroll_left.stat }}<span>{{ tab_scroll_left.hover }}</span></div>
-			<div id='tab_scroll_left_label' class='overlay_label'></div>														
+			<div class='item_container'>
+				<div style='background-color: {{ tab_scroll_left.color }};' id='tab_scroll_left' class='overlay'>{{ tab_scroll_left.stat }}</div>
+				<div class='item_details'>
+					<div class="menu_arrow" style="left: 10px;">◢◣</div>
+					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
+					{{ tab_scroll_left.hover|safe }}
+				</div>
+			</div>
 			
-			<div style='background-color: {{ tab_scroll_right.color }};' id='tab_scroll_right' class='overlay'>{{ tab_scroll_right.stat }}<span>{{ tab_scroll_right.hover }}</span></div>
-			<div id='tab_scroll_right_label' class='overlay_label'></div>														
-			
-			<div style='background-color: {{ new_tab_button.color }};' id='new_tab' class='overlay'>{{ new_tab_button.stat }}<span>{{ new_tab_button.hover }}</span></div>
-			<div id='new_tab_label' class='overlay_label'></div>														
-			
-			<div style='background-color: {{ list_all_tabs.color }};' id='list_all_tabs' class='overlay'>{{ list_all_tabs.stat }}<span>{{ list_all_tabs.hover }}</span></div>
-			<div id='list_all_tabs_label' class='overlay_label'></div>																						
+			<div class='item_container'>
+				<div style='background-color: {{ tab_scroll_right.color }};' id='tab_scroll_right' class='overlay'>{{ tab_scroll_right.stat }}</div>
+				<div class='item_details' style='left: 860px;'>
+					<div class="menu_arrow" style="left: 10px;">◢◣</div>
+					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
+					{{ tab_scroll_right.hover|safe }}
+				</div>
+			</div>				
+				
+			<div class='item_container'>				
+				<div style='background-color: {{ new_tab_button.color }};' id='new_tab' class='overlay'>{{ new_tab_button.stat }}</div>
+				<div class='item_details' style='left: 890px;'>
+					<div class="menu_arrow" style="left: 10px;">◢◣</div>
+					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
+					{{ new_tab_button.hover|safe }}
+				</div>
+			</div>
+
+			<div class='item_container'>				
+				<div style='background-color: {{ list_all_tabs.color }};' id='list_all_tabs' class='overlay'>{{ list_all_tabs.stat }}</div>
+				<div class='item_details' style='left: 920px;'>
+					<div class="menu_arrow" style="left: 10px;">◢◣</div>
+					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
+					{{ list_all_tabs.hover|safe }}
+				</div>
+			</div>
+
 		</div>		
 		
 		<div id='navigation_toolbar'>
-			<div style='background-color: {{ back.color }};' id='back' class='overlay'>{{ back.stat }}<span>{{ back.hover }}</span></div>
-			<div id='back_label' class='overlay_label'></div>
-			
-			<div style='background-color: {{ forward.color }};' id='forward' class='overlay'>{{ forward.stat }}<span>{{ forward.hover }}</span></div>
-			<div id='forward_label' class='overlay_label'></div>			
-			
-			<div style='background-color: {{ reload_button.color }};' id='reload' class='overlay'>{{ reload_button.stat }}<span>{{ reload_button.hover }}</span></div>
-			<div id='reload_label' class='overlay_label'></div>
-			
-			<div id='stop_label' class='overlay_label'></div>
-			
-			<div style='background-color: {{ home.color }};' id='home' class='overlay'>{{ home.stat }}<span>{{ home.hover }}</span></div>
-			<div id='home_label' class='overlay_label'></div>	
-		
-			<div style='background-color: {{ site_id_normal.color }};' id='site_id' class='overlay'>{{ site_id_normal.stat }}<span>{{ site_id_normal.hover }}</span></div>
-			<div id='site_id_label' class='overlay_label'></div>						
-			
-			<div style='background-color: {{ url_enter_key.color }};' id='location_bar' class='overlay'>{{ url_enter_key.stat }}<span>{{ url_enter_key.hover }}</span></div>
-			<div id='location_bar_label' class='overlay_label'></div>															
-			
-			<div style='background-color: {{ rss.color }};' id='rss' class='overlay'>{{ rss.stat }}<span>{{ rss.hover }}</span></div>
-			<div id='location_bar_go_button_label' class='overlay_label'></div>	
+			<div class='item_container'>				
+				<div style='background-color: {{ back.color }};' id='back' class='overlay'>{{ back.stat }}</div>
+				<div class='item_details' style='left: 3px;'>
+					<div class="menu_arrow" style="left: 10px;">◢◣</div>
+					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
+					{{ back.hover|safe }}
+				</div>
+			</div>
 
-			<div style='background-color: {{ bookmark_star.color }};' id='bookmark_star' class='overlay'>{{ bookmark_star.stat }}<span>{{ bookmark_star.hover }}</span></div>
-			<div id='location_bar_go_button_label' class='overlay_label'></div>	
-																						
-			<div style='background-color: {{ url_go_button.color }};' id='location_bar_go_button' class='overlay'>{{ url_go_button.stat }}<span>{{ url_go_button.hover }}</span></div>
-			<div id='location_bar_go_button_label' class='overlay_label'></div>				
-			
-			<div style='background-color: {{ most_visited_drop_down.color }};' id='most_visited_drop_down' class='overlay'>{{ most_visited_drop_down.stat }}<span>{{ most_visited_drop_down.hover }}</span></div>
-			<div id='most_visited_drop_down_label' class='overlay_label'></div>	
-			
-			<div style='background-color: {{ search_drop_down.color }};' id='search_drop_down' class='overlay'>{{ search_drop_down.stat }}<span>{{ search_drop_down.hover }}</span></div>
-			<div id='search_engine_drop_down_label' class='overlay_label'></div>								
-			
-			<div style='background-color: {{ search_enter_key.color }};' id='search_bar' class='overlay'>{{ search_enter_key.stat }}<span>{{ search_enter_key.hover }}</span></div>
-			<div id='search_bar_label' class='overlay_label'></div>	
-			
-			<div style='background-color: {{ search_go_button.color }};' id='search_go_button' class='overlay'>{{ search_go_button.stat }}<span>{{ search_go_button.hover }}</span></div>
-			<div id='search_go_button_label' class='overlay_label'></div>														
-			
-			<div style='background-color: {{ bookmarks_button.color }};' id='bookmarks_button' class='overlay'>{{ bookmarks_button.stat }}<span>{{ bookmarks_button.hover }}</span></div>
-			<div id='bookmarks_button_label' class='overlay_label'></div>														
-			
-			<div style='background-color: {{ feedback_button.color }};' id='feedback_button' class='overlay'>{{ feedback_button.stat }}<span>{{ feedback_button.hover }}</span></div>
-			<div id='feedback_button_label' class='overlay_label'></div>														
+			<div class='item_container'>								
+				<div style='background-color: {{ forward.color }};' id='forward' class='overlay'>{{ forward.stat }}</div>
+				<div class='item_details' style='left: 30px;'>
+					<div class="menu_arrow" style="left: 10px;">◢◣</div>
+					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
+					{{ forward.hover|safe }}
+				</div>
+			</div>
+
+			<div class='item_container'>								
+				<div style='background-color: {{ reload_button.color }};' id='reload' class='overlay'>{{ reload_button.stat }}</div>
+				<div class='item_details' style='left: 75px;'>
+					<div class="menu_arrow" style="left: 10px;">◢◣</div>
+					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
+					{{ reload_button.hover|safe }}
+				</div>
+			</div>
+
+			<div class='item_container'>										
+				<div style='background-color: {{ home.color }};' id='home' class='overlay'>{{ home.stat }}</div>
+				<div class='item_details' style='left: 110px;'>
+					<div class="menu_arrow" style="left: 10px;">◢◣</div>
+					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
+					{{ home.hover|safe }}
+				</div>
+			</div>
+
+			<div class='item_container'>							
+				<div style='background-color: {{ site_id_normal.color }};' id='site_id' class='overlay'>{{ site_id_normal.stat }}</div>
+				<div class='item_details' style='left: 145px;'>
+					<div class="menu_arrow" style="left: 10px;">◢◣</div>
+					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
+					{{ site_id_normal.hover|safe }}
+					<div style='height: 15px;'></div>
+					{{ site_id_ev.hover|safe }}					
+					<div style='height: 15px;'></div>
+					{{ site_id_ssl.hover|safe }}						
+				</div>
+			</div>
+				
+			<div class='item_container'>								
+				<div style='background-color: {{ url_enter_key.color }};' id='location_bar' class='overlay'>{{ url_enter_key.stat }}</div>
+				<div class='item_details' style='left: 342px;'>
+					<div class="menu_arrow" style="left: 10px;">◢◣</div>
+					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
+					{{ url_enter_key.hover|safe }}
+					<div style='height: 15px;'></div>					
+					{{ url_search_enter_key.hover|safe }}
+				</div>
+			</div>
+				
+			<div class='item_container'>								
+				<div style='background-color: {{ rss.color }};' id='rss' class='overlay'>{{ rss.stat }}</div>
+				<div class='item_details' style='left: 541px;'>
+					<div class="menu_arrow" style="left: 10px;">◢◣</div>
+					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
+					{{ rss.hover|safe }}
+				</div>
+			</div>
+
+			<div class='item_container'>					
+				<div style='background-color: {{ bookmark_star.color }};' id='bookmark_star' class='overlay'>{{ bookmark_star.stat }}</div>
+				<div class='item_details' style='left: 565px;'>
+					<div class="menu_arrow" style="left: 10px;">◢◣</div>
+					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
+					{{ bookmark_star.hover|safe }}
+				</div>
+			</div>
+
+			<div class='item_container'>																											
+				<div style='background-color: {{ url_go_button.color }};' id='location_bar_go_button' class='overlay'>{{ url_go_button.stat }}</div>
+				<div class='item_details' style='left: 590px;'>
+					<div class="menu_arrow" style="left: 10px;">◢◣</div>
+					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
+					{{ url_go_button.hover|safe }}
+					<div style='height: 15px;'></div>					
+					{{ url_search_go_button.hover|safe }}					
+				</div>
+			</div>
+
+			<div class='item_container'>								
+				<div style='background-color: {{ most_visited_drop_down.color }};' id='most_visited_drop_down' class='overlay'>{{ most_visited_drop_down.stat }}</div>
+				<div class='item_details' style='left: 615px;'>
+					<div class="menu_arrow" style="left: 10px;">◢◣</div>
+					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
+					{{ most_visited_drop_down.hover|safe }}
+				</div>
+			</div>
+
+			<div class='item_container'>								
+				<div style='background-color: {{ search_drop_down.color }};' id='search_drop_down' class='overlay'>{{ search_drop_down.stat }}</div>
+				<div class='item_details' style='left: 920px;'>
+					<div class="menu_arrow" style="left: 10px;">◢◣</div>
+					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
+					{{ search_drop_down.hover|safe }}
+				</div>
+			</div>
+				
+			<div class='item_container'>								
+				<div style='background-color: {{ search_enter_key.color }};' id='search_bar' class='overlay'>{{ search_enter_key.stat }}</div>
+				<div class='item_details' style='left: 920px;'>
+					<div class="menu_arrow" style="left: 10px;">◢◣</div>
+					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
+					{{ search_enter_key.hover|safe }}
+				</div>
+			</div>
+				
+			<div class='item_container'>				
+				<div style='background-color: {{ search_go_button.color }};' id='search_go_button' class='overlay'>{{ search_go_button.stat }}</div>
+				<div class='item_details' style='left: 920px;'>
+					<div class="menu_arrow" style="left: 10px;">◢◣</div>
+					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
+					{{ search_go_button.hover|safe }}
+				</div>
+			</div>
+
+			<div class='item_container'>								
+				<div style='background-color: {{ bookmarks_button.color }};' id='bookmarks_button' class='overlay'>{{ bookmarks_button.stat }}</div>
+				<div class='item_details' style='left: 920px;'>
+					<div class="menu_arrow" style="left: 10px;">◢◣</div>
+					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
+					{{ bookmarks_button.hover|safe }}
+				</div>
+			</div>
+
+			<div class='item_container'>								
+				<div style='background-color: {{ feedback_button.color }};' id='feedback_button' class='overlay'>{{ feedback_button.stat }}</div>
+				<div class='item_details' style='left: 920px;'>
+					<div class="menu_arrow" style="left: 10px;">◢◣</div>
+					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
+					{{ feedback_button.hover|safe }}
+				</div>
+			</div>
 		</div>	
-		
-		<!--
-		<div id='navigation_toolbar_overflow'>
-			<div id='bookmarks_bar_label' class='overlay_label'></div>														
-			
-			<div id='rss' class='overlay'>RSS Icon <div style='background-color: {{ rss.color }};'>{{ rss.stat }}</div></div>
-			<div id='rss_label' class='overlay_label'></div>		
-			
-			<div id='bookmark_star' class='overlay'>Bookmark Star <div style='background-color: {{ bookmark_star.color }};'>{{ bookmark_star.stat }}</div></div>
-			<div id='bookmark_star_label' class='overlay_label'></div>	
-		</div>	
-		-->
-		
 
 		<div id='vertical_scroll'> 
 			<div style='background-color: {{ scroll_up.color }};' id='scrol_up' class='overlay'>{{ scroll_up.stat }}<span>{{ scroll_up.hover }}</span></div>
@@ -216,7 +349,7 @@
 		
 		<div id='bookmarks_menu_wrapper'>
 			<img src='media/img/bookmarks_menu.png' id='bookmarks_menu' />	
-			<!-- <div style='background-color: {{ bookmark_all_tabs.color }};' id='bookmark_all_tabs' class='overlay_bookmarks_menu'>{{ bookmark_all_tabs.stat }}</div> -->
+			<div style='background-color: {{ bookmark_all_tabs.color }};' id='bookmark_all_tabs' class='overlay_bookmarks_menu'>{{ bookmark_all_tabs.stat }}</div> 
 			<div style='background-color: {{ organize_bookmarks.color }};' id='organize_bookmarks' class='overlay_bookmarks_menu'>{{ organize_bookmarks.stat }}</div>				
 			<div style='background-color: {{ view_bookmarks_toolbar.color }};' id='view_bookmarks_toolbar' class='overlay_bookmarks_menu'>{{ view_bookmarks_toolbar.stat }}</div>				
 			<div style='background-color: {{ show_in_sidebar.color }};' id='show_in_sidebar' class='overlay_bookmarks_menu'>{{ show_in_sidebar.stat }}</div>				

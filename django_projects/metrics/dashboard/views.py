@@ -52,7 +52,10 @@ def heatmap(request):
 		
 		item.perc = "%0.0f" % (item.perc * 100) + '%'
 		item.clicks_per_user = round(item.clicks_per_user, 2)		
-		item.hover = item.name + ': used by ' + str(item.perc) + ' of beta users, with an average of ' + str(item.clicks_per_user) + ' clicks per user'
+		item.hover = '<b>' + item.name + '</b>'
+		item.hover += '<div style="height: 5px;"></div>' 
+		item.hover += 'Used by ' + str(item.perc) + ' of beta users, ' 
+		item.hover += 'with an average of ' + str(item.clicks_per_user) + ' clicks per user.'
 		if data == 'freq':
 			item.stat = item.clicks_per_user
 			show_perc = False
@@ -93,11 +96,17 @@ def heatmap(request):
 	    'items_list':items_list,			
 			'skill':skill,
 			'show_perc':show_perc,
+			'data':data,
 
-			'all':skill == 'all',
+			'all_skills':skill == 'all',
 			'beginner':skill == 'beginner',
 			'intermediate':skill == 'intermediate',
 			'advanced':skill == 'advanced',
+
+			'all_hours':time_on_web == 'all',
+			'low':time_on_web == 'low',
+			'medium':time_on_web == 'medium',
+			'high':time_on_web == 'high',
 
 			'add_ons':items[12],
 			'back':items[0],
