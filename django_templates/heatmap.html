@@ -169,6 +169,8 @@
 					<div class="menu_arrow" style="left: 10px;">◢◣</div>
 					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
 					{{ reload_button.hover|safe }}
+					<div style='height: 15px;'></div>					
+					{{ stop.hover|safe }}					
 				</div>
 			</div>
 
@@ -245,7 +247,7 @@
 
 			<div class='item_container'>								
 				<div style='background-color: {{ search_drop_down.color }};' id='search_drop_down' class='overlay'>{{ search_drop_down.stat }}</div>
-				<div class='item_details' style='left: 920px;'>
+				<div class='item_details' style='left: 652px;'>
 					<div class="menu_arrow" style="left: 10px;">◢◣</div>
 					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
 					{{ search_drop_down.hover|safe }}
@@ -254,7 +256,7 @@
 				
 			<div class='item_container'>								
 				<div style='background-color: {{ search_enter_key.color }};' id='search_bar' class='overlay'>{{ search_enter_key.stat }}</div>
-				<div class='item_details' style='left: 920px;'>
+				<div class='item_details' style='left: 728px;'>
 					<div class="menu_arrow" style="left: 10px;">◢◣</div>
 					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
 					{{ search_enter_key.hover|safe }}
@@ -263,7 +265,7 @@
 				
 			<div class='item_container'>				
 				<div style='background-color: {{ search_go_button.color }};' id='search_go_button' class='overlay'>{{ search_go_button.stat }}</div>
-				<div class='item_details' style='left: 920px;'>
+				<div class='item_details' style='left: 800px;'>
 					<div class="menu_arrow" style="left: 10px;">◢◣</div>
 					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
 					{{ search_go_button.hover|safe }}
@@ -272,7 +274,7 @@
 
 			<div class='item_container'>								
 				<div style='background-color: {{ bookmarks_button.color }};' id='bookmarks_button' class='overlay'>{{ bookmarks_button.stat }}</div>
-				<div class='item_details' style='left: 920px;'>
+				<div class='item_details' style='left: 835px;'>
 					<div class="menu_arrow" style="left: 10px;">◢◣</div>
 					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
 					{{ bookmarks_button.hover|safe }}
@@ -281,7 +283,7 @@
 
 			<div class='item_container'>								
 				<div style='background-color: {{ feedback_button.color }};' id='feedback_button' class='overlay'>{{ feedback_button.stat }}</div>
-				<div class='item_details' style='left: 920px;'>
+				<div class='item_details' style='left: 895px;'>
 					<div class="menu_arrow" style="left: 10px;">◢◣</div>
 					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
 					{{ feedback_button.hover|safe }}
@@ -290,25 +292,61 @@
 		</div>	
 
 		<div id='vertical_scroll'> 
-			<div style='background-color: {{ scroll_up.color }};' id='scrol_up' class='overlay'>{{ scroll_up.stat }}<span>{{ scroll_up.hover }}</span></div>
-			<div id='scroll_vertical_up_label' class='overlay_label'></div>
-			
-			<div style='background-color: {{ scroll_vertical_bar.color }};' id='scroll_vertical_bar' class='overlay'>{{ scroll_vertical_bar.stat }}<span>{{ scroll_vertical_bar.hover }}</span></div>
-			<div id='scroll_vertical_bar_label' class='overlay_label'></div>
-			
-			<div style='background-color: {{ scroll_down.color }};' id='scroll_down' class='overlay'>{{ scroll_down.stat }}<span>{{ scroll_down.hover }}</span></div>
-			<div id='scroll_vertical_down_label' class='overlay_label'></div>																													
+			<div class='item_container'>										
+				<div style='background-color: {{ scroll_up.color }};' id='scroll_up' class='overlay'>{{ scroll_up.stat }}</div>
+				<div class='item_details' style='left: 0px;'>
+					<div class="menu_arrow" style="left: 10px;">◢◣</div>
+					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
+					{{ scroll_up.hover|safe }}
+				</div>
+			</div>
+
+			<div class='item_container'>												
+				<div style='background-color: {{ scroll_vertical_bar.color }};' id='scroll_vertical_bar' class='overlay'>{{ scroll_vertical_bar.stat }}</div>
+				<div class='item_details' style='left: 0px; top: 240px;'>
+					<div class="menu_arrow" style="left: 10px;">◢◣</div>
+					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
+					{{ scroll_vertical_bar.hover|safe }}
+				</div>
+			</div>
+
+			<div class='item_container'>												
+				<div style='background-color: {{ scroll_down.color }};' id='scroll_down' class='overlay'>{{ scroll_down.stat }}</div>
+				<div class='item_details' style='top: 468px;'>
+					<div class="menu_arrow" style="left: 10px;">◢◣</div>
+					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
+					{{ scroll_down.hover|safe }}
+				</div>
+			</div>
 		</div>			
 
 		<div id='horizontal_scroll'>
-			<div style='background-color: {{ scroll_left.color }};' id='scroll_left' class='overlay'>{{ scroll_left.stat }}<span>{{ scroll_left.hover }}</span></div>
-			<div id='scroll_horizontal_up_label' class='overlay_label'></div>
+			<div class='item_container'>								
+				<div style='background-color: {{ scroll_left.color }};' id='scroll_left' class='overlay'>{{ scroll_left.stat }}</div>
+				<div class='item_details' style='left: -3px; top: -3px;'>
+					<div class="menu_arrow" style="left: 10px;">◢◣</div>
+					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
+					{{ scroll_left.hover|safe }}
+				</div>
+			</div>
 			
-			<div style='background-color: {{ scroll_horizontal_bar.color }};' id='scroll_horizontal_bar' class='overlay'>{{ scroll_horizontal_bar.stat }}<span>{{ scroll_horizontal_bar.hover }}</span></div>
-			<div id='scroll_horizontal_bar_label' class='overlay_label'></div>
+			<div class='item_container'>												
+				<div style='background-color: {{ scroll_horizontal_bar.color }};' id='scroll_horizontal_bar' class='overlay'>{{ scroll_horizontal_bar.stat }}</div>
+				<div class='item_details' style='left: 435px; top: -3px;'>
+					<div class="menu_arrow" style="left: 10px;">◢◣</div>
+					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
+					{{ scroll_horizontal_bar.hover|safe }}
+				</div>
+			</div>
 			
-			<div style='background-color: {{ scroll_right.color }};' id='scroll_right' class='overlay'>{{ scroll_right.stat }}<span>{{ scroll_right.hover }}</span></div>
-			<div id='scroll_horizontal_down_label' class='overlay_label'></div>								
+			<div class='item_container'>												
+				<div style='background-color: {{ scroll_right.color }};' id='scroll_right' class='overlay'>{{ scroll_right.stat }}</div>
+				<div class='item_details' style='left: 912px; top: -3px;'>
+					<div class="menu_arrow" style="left: 10px;">◢◣</div>
+					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
+					{{ scroll_right.hover|safe }}
+				</div>
+			</div>
 		</div>		
 	</div>				
 	

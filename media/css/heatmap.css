@@ -286,9 +286,9 @@ html {
 #scroll_horizontal_bar { left: 262px; width: 332px; height: 17px; line-height: 1.7em; }
 #scroll_right { left: 560px; height: 17px; width: 22px; line-height: 1.7em; }
 
-#scroll_up { height: 17px; width: 22px; line-height: 1.7em; }
-#scroll_vertical_bar { top: 68px; left: -26px; height: 363px; width: 22px; line-height: 37em; }
-#scroll_down { top: 470px; left: -48px; width: 22px; line-height: 1.7em; }
+#scroll_up { width: 24px; line-height: 2em; }
+#scroll_vertical_bar { height:363px; line-height:37em; top:46px; width:22px; }
+#scroll_down { line-height:2em; top:85px; width:24px; }
 
 .overlay_menu {
 	position: absolute;
