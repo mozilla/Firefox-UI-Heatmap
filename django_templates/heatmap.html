@@ -24,6 +24,7 @@
 		{% endif %}		
 	</ul>	
 	
+	<!--
 	<ul>
 		<li><a href='?t=all&d={{ data }}' class="button left {% if all_hours %}active{% endif %}">All Hours</a></li>
 		{% if all_skills %}
@@ -36,6 +37,7 @@
 		<li><a href='#' class="button inactive right">&nbsp;&nbsp; 6 + &nbsp;&nbsp;</a></li>		
 		{% endif %}		
 	</ul>
+	-->
 		
 	<ul id='checkboxes'>
 		<li>
@@ -193,11 +195,11 @@
 				<div class='item_details' style='left: 145px;'>
 					<div class="menu_arrow" style="left: 10px;">◢◣</div>
 					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
-					{{ site_id_normal.hover|safe }}
-					<div style='height: 15px;'></div>
-					{{ site_id_ev.hover|safe }}					
-					<div style='height: 15px;'></div>
-					{{ site_id_ssl.hover|safe }}						
+					{{ site_id_normal.hover|safe }}			
+					<div style='height: 20px;'></div>
+					{{ site_id_ssl.hover|safe }}	
+					<div style='height: 20px;'></div>
+					{{ site_id_ev.hover|safe }}												
 				</div>
 			</div>
 				
@@ -207,7 +209,7 @@
 					<div class="menu_arrow" style="left: 10px;">◢◣</div>
 					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
 					{{ url_enter_key.hover|safe }}
-					<div style='height: 15px;'></div>					
+					<div style='height: 20px;'></div>					
 					{{ url_search_enter_key.hover|safe }}
 				</div>
 			</div>
@@ -236,7 +238,7 @@
 					<div class="menu_arrow" style="left: 10px;">◢◣</div>
 					<div class="menu_arrow_mask" style="left: 8.5px;"></div>
 					{{ url_go_button.hover|safe }}
-					<div style='height: 15px;'></div>					
+					<div style='height: 20px;'></div>					
 					{{ url_search_go_button.hover|safe }}					
 				</div>
 			</div>

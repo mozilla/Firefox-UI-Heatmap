@@ -78,16 +78,27 @@ def heatmap(request):
 		item.hover += 'Beg <div style="height: 4px;"></div>'				
 		item.hover += '</div>'
 		
+		if data == 'perc':
+			item.hover += '<div style="float: left; width: 77%; font-size: 10px; line-height: 1.4em; color: #EFEFEF;">'
+			item.hover += '<div style="height: 4px;"></div>'
+			item.hover += '<div style="background-color:' + item_advanced.heat_perc() +'; height: 15px; width:' + str(advanced) + '; padding-left: 2px;">' + str(advanced) + '</div>'
+			item.hover += '<div style="height: 3px;"></div>'
+			item.hover += '<div style="background-color:' + item_intermediate.heat_perc() +'; height: 15px; width:' + str(beginner) + '; padding-left: 2px;">' + str(beginner) + '</div>'
+			item.hover += '<div style="height: 3px;"></div>'
+			item.hover += '<div style="background-color:' + item_beginner.heat_perc() +'; height: 15px; width:' + str(intermediate) + '; padding-left: 2px;">' + str(intermediate) + '</div>'						
+			item.hover += '</div>'
+			item.hover += '<div style="height: 0px; clear: both;"></div>'
+		else:
+			item.hover += '<div style="float: left; width: 77%; font-size: 11px; line-height: 1.4em; ">'		
+			item.hover += '<div style="height: 3px;"></div>'
+			item.hover += str(advanced)
+			item.hover += '<div style="height: 3px;"></div>'
+			item.hover += str(intermediate)
+			item.hover += '<div style="height: 3px;"></div>'
+			item.hover += str(beginner)			
+			item.hover += '</div>' 						
+			item.hover += '<div style="height: 0px; clear: both;"></div>'
 		
-		item.hover += '<div style="float: left; width: 77%; font-size: 10px; line-height: 1.4em;">'
-		item.hover += '<div style="height: 4px;"></div>'
-		item.hover += '<div style="background-color:' + item_advanced.heat_perc() +'; height: 15px; width:' + str(advanced) + '; padding-left: 2px;">' + str(advanced) + '</div>'
-		item.hover += '<div style="height: 3px;"></div>'
-		item.hover += '<div style="background-color:' + item_intermediate.heat_perc() +'; height: 15px; width:' + str(beginner) + '; padding-left: 2px;">' + str(beginner) + '</div>'
-		item.hover += '<div style="height: 3px;"></div>'
-		item.hover += '<div style="background-color:' + item_beginner.heat_perc() +'; height: 15px; width:' + str(intermediate) + '; padding-left: 2px;">' + str(intermediate) + '</div>'						
-		item.hover += '</div>'
-		item.hover += '<div style="height: 0px; clear: both;"></div>'
 		
 		
 		if data == 'freq':
