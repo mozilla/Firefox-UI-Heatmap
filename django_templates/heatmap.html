@@ -62,6 +62,7 @@
 
 {% block content %}
 	<div id='content'>	
+		{% if show_perc %}
 		<div class='items_list' >
 			<h3>Customizations</h3>
 				{% for item in items_list %}
@@ -72,6 +73,10 @@
 					{% endif %}
 				{% endfor %}
 		</div>	
+		{% else %}
+			<div class='items_list' style='width: 262px;'>&nbsp;
+			</div>	
+		{% endif %}
 
 		<div class='items_list' >
 			<h3>Menu Items</h3>

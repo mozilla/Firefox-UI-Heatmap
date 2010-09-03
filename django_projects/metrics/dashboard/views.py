@@ -49,13 +49,47 @@ def heatmap(request):
 			item.color = item.heat_freq()
 		else:
 			item.color = item.heat_perc()	
+
+		item_beginner = Heatmap.objects.filter(os = 'Windows', time_on_web = time_on_web, skill = 'beginner', name = item.name)[0]
+		item_intermediate = Heatmap.objects.filter(os = 'Windows', time_on_web = time_on_web, skill = 'intermediate', name = item.name)[0]		
+		item_advanced = Heatmap.objects.filter(os = 'Windows', time_on_web = time_on_web, skill = 'advanced', name = item.name)[0]
+		
+		if data == 'perc':
+			beginner = "%0.0f" % (item_beginner.perc * 100) + '%'
+			intermediate = "%0.0f" % (item_intermediate.perc * 100) + '%'
+			advanced = "%0.0f" % (item_advanced.perc * 100) + '%'
+		else:
+			beginner = round(item_beginner.clicks_per_user, 2)
+			intermediate = round(item_intermediate.clicks_per_user, 2)
+			advanced = round(item_advanced.clicks_per_user, 2)
 		
 		item.perc = "%0.0f" % (item.perc * 100) + '%'
 		item.clicks_per_user = round(item.clicks_per_user, 2)		
 		item.hover = '<b>' + item.name + '</b>'
 		item.hover += '<div style="height: 5px;"></div>' 
 		item.hover += 'Used by ' + str(item.perc) + ' of beta users, ' 
-		item.hover += 'with an average of ' + str(item.clicks_per_user) + ' clicks per user.'
+		item.hover += 'with an average of ' + str(item.clicks_per_user) + ' clicks per user. '
+		item.hover += '<div style="height: 8px;"></div>' 
+
+		item.hover += '<div style="float: left; width: 15%; margin-right: 3%; text-align: right; color: #666; font-size: 11px;">'
+		item.hover += '<div style="height: 4px;"></div>'
+		item.hover += 'Adv <div style="height: 4px;"></div>'
+		item.hover += 'Int <div style="height: 4px;"></div>'
+		item.hover += 'Beg <div style="height: 4px;"></div>'				
+		item.hover += '</div>'
+		
+		
+		item.hover += '<div style="float: left; width: 77%; font-size: 10px; line-height: 1.4em;">'
+		item.hover += '<div style="height: 4px;"></div>'
+		item.hover += '<div style="background-color:' + item_advanced.heat_perc() +'; height: 15px; width:' + str(advanced) + '; padding-left: 2px;">' + str(advanced) + '</div>'
+		item.hover += '<div style="height: 3px;"></div>'
+		item.hover += '<div style="background-color:' + item_intermediate.heat_perc() +'; height: 15px; width:' + str(beginner) + '; padding-left: 2px;">' + str(beginner) + '</div>'
+		item.hover += '<div style="height: 3px;"></div>'
+		item.hover += '<div style="background-color:' + item_beginner.heat_perc() +'; height: 15px; width:' + str(intermediate) + '; padding-left: 2px;">' + str(intermediate) + '</div>'						
+		item.hover += '</div>'
+		item.hover += '<div style="height: 0px; clear: both;"></div>'
+		
+		
 		if data == 'freq':
 			item.stat = item.clicks_per_user
 			show_perc = False
