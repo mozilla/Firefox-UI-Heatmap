@@ -83,9 +83,9 @@ def heatmap(request):
 			item.hover += '<div style="height: 4px;"></div>'
 			item.hover += '<div style="background-color:' + item_advanced.heat_perc() +'; height: 15px; width:' + str(advanced) + '; padding-left: 2px;">' + str(advanced) + '</div>'
 			item.hover += '<div style="height: 3px;"></div>'
-			item.hover += '<div style="background-color:' + item_intermediate.heat_perc() +'; height: 15px; width:' + str(beginner) + '; padding-left: 2px;">' + str(beginner) + '</div>'
+			item.hover += '<div style="background-color:' + item_intermediate.heat_perc() +'; height: 15px; width:' + str(intermediate) + '; padding-left: 2px;">' + str(intermediate) + '</div>'
 			item.hover += '<div style="height: 3px;"></div>'
-			item.hover += '<div style="background-color:' + item_beginner.heat_perc() +'; height: 15px; width:' + str(intermediate) + '; padding-left: 2px;">' + str(intermediate) + '</div>'						
+			item.hover += '<div style="background-color:' + item_beginner.heat_perc() +'; height: 15px; width:' + str(beginner) + '; padding-left: 2px;">' + str(beginner) + '</div>'						
 			item.hover += '</div>'
 			item.hover += '<div style="height: 0px; clear: both;"></div>'
 		else:
@@ -98,8 +98,6 @@ def heatmap(request):
 			item.hover += str(beginner)			
 			item.hover += '</div>' 						
 			item.hover += '<div style="height: 0px; clear: both;"></div>'
-		
-		
 		
 		if data == 'freq':
 			item.stat = item.clicks_per_user
